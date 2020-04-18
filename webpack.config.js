@@ -1,16 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-model.export = {
+module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: [
-            '*', '.mjs', '.js', '.svelte'
-        ]
+        extensions: ['*', '.mjs', '.js', '.svelte']
     },
     module: {
         rules: [{
@@ -21,7 +19,7 @@ model.export = {
                 }
             },
             {
-                test: /\.svelte?$/,
+                test: /\.svelte$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'svelte-loader'
