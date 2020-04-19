@@ -1,7 +1,16 @@
 <script>
   import Comments from "./Comments.svelte";
-  export let post;
-  console.log(post);
+  import  Modal from "./Modal.svelte";
+  import Share from './Share.svelte';
+  export let username;
+  /*  export let location; */
+  export let avatar;
+  export let photo;
+/*   export let like;
+  export let bookmark; */
+  export let postComment;
+  export let comments;
+  
 </script>
 
 <style>
@@ -121,9 +130,9 @@
   <div class="Card-container">
     <div class="Card-Header">
       <div class="Card-user">
-        <img src={post.avatar} alt="" />
-        <h2>{post.username}</h2>
-        <span>{post.location}</span>
+        <img src={avatar} alt="" />
+        <h2>{username}</h2>
+        <span>Santiago, Chile</span>
       </div>
       <div class="Card-settings">
         <i class="fas fa-ellipsis-h" />
@@ -131,7 +140,7 @@
     </div>
     <div class="Card-photo">
       <figure>
-        <img src={post.photo} alt="" />
+        <img src={photo} alt="" />
       </figure>
     </div>
     <div class="Card-icons">
@@ -144,11 +153,14 @@
       </div>
     </div>
     <div class="Card-description">
-      <h3>{post.username}</h3>
-      <span>Hola</span>
+      <h3>{username}</h3>
+      <span>{postComment}</span>
 
     </div>
-    <Comments />
+    <Comments {comments} />
+    <Modal>
+   <Share/>
+    </Modal>
   </div>
 
 </div>

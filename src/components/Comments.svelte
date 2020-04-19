@@ -1,3 +1,24 @@
+<script>
+  import Comments from "./Comments.svelte";
+  export let comments = [];
+  function addComment(event) {
+    const msg = event.target.text.value;
+    console.log(msg.length)
+    if (msg.length > 3) {
+      const message={
+        id: Date.now(),
+        text: msg,
+        username: 'visidevi'
+      }
+      /* Asigna y agrega nuevos comentarios */
+      comments = [...comments, message]
+      console.log(comments)
+      event.target.text.value = ''
+    } 
+
+  }
+</script>
+
 <style>
   .Comments h3 {
     font-size: 14px;
@@ -53,20 +74,22 @@
 
 <div class="Comments">
   <div class="Comments-content">
-    <div class="Comments-users">
-      <h3>Crispeta</h3>
-      <span>Hola Elmo</span>
-    </div>
+    {#each comments as comment (comment.id)}
+      <div class="Comments-users">
+        <h3>{comment.username}</h3>
+        <span>{comment.text}</span>
+      </div>
+    {/each}
     <div class="Comments-add">
-      <form action="">
+      <form on:submit|preventDefault={addComment}>
         <label for="text">Comentario</label>
         <input
           type="text"
           name=""
           id="text"
           class="Comments-input"
-          placeholder="Agregar Commentario" />
-        <button type="submit">Enviar</button>
+          placeholder="Agregar Commentario..." />
+        <button type="submit">Post</button>
       </form>
     </div>
   </div>

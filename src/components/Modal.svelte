@@ -16,7 +16,7 @@
   }
 </style>
 
-<div class="Modal-overlay">
-
-  <div class="Modal" />
+<div class="Modal">
+  <div class="Modal-overlay"/>
+  <slot/>
 </div>

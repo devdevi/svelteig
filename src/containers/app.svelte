@@ -5,7 +5,7 @@
 import Main from '@components/Main.svelte';
 import Header from '@components/Header.svelte';
 import Sidebar from '@components/Sidebar.svelte';
-import Timeline from '@components/Timeline.svelte';
+import TimeLine from './../components/TimeLine.svelte';
 
 let data = {}
 const localUser = {user: {
@@ -37,6 +37,6 @@ onMount(async () => {
 </style>
 <Header/>
 <Main>
-    <Timeline posts="data.posts"/>
+    <TimeLine posts={data.posts}/>
     <Sidebar {...localUser.user}/>
 </Main>
