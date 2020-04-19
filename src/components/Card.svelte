@@ -1,8 +1,13 @@
 <script>
+
   import { blur } from "svelte/transition";
   import Comments from "./Comments.svelte";
   import Modal from "./Modal.svelte";
   import Share from "./Share.svelte";
+
+  /* Store */
+  import { likeCount } from "./../store/store.js";
+
   export let username;
   /*  export let location; */
   export let avatar;
@@ -12,6 +17,7 @@
   export let bookmark = false;
   export let postComment;
   export let comments;
+
   let isModal = false;
 
   function handleClick() {
@@ -19,6 +25,7 @@
   }
   function handleLike() {
     like = !like;
+    like ? likeCount.update(n => n + 1) : likeCount.update(n => n - 1);
   }
 </script>
 
