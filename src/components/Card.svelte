@@ -1,5 +1,5 @@
 <script>
-  import { blur } from 'svelte/transition';
+  import { blur } from "svelte/transition";
   import Comments from "./Comments.svelte";
   import Modal from "./Modal.svelte";
   import Share from "./Share.svelte";
@@ -7,13 +7,18 @@
   /*  export let location; */
   export let avatar;
   export let photo;
-  /*   export let like;
-  export let bookmark; */
+
+  export let like = false;
+  export let bookmark = false;
   export let postComment;
   export let comments;
   let isModal = false;
+
   function handleClick() {
     isModal = !isModal;
+  }
+  function handleLike() {
+    like = !like;
   }
 </script>
 
@@ -131,13 +136,13 @@
 </style>
 
 <div class="Card">
- {#if isModal}
- <div class="" transition:blur>
-   <Modal>
-    <Share on:click={handleClick}/>
-  </Modal>
- </div>
- {/if}
+  {#if isModal}
+    <div class="" transition:blur>
+      <Modal>
+        <Share on:click={handleClick} />
+      </Modal>
+    </div>
+  {/if}
   <div class="Card-container">
     <div class="Card-Header">
       <div class="Card-user">
@@ -150,17 +155,23 @@
       </div>
     </div>
     <div class="Card-photo">
-      <figure>
+      <figure on:dblclick={handleLike}>
         <img src={photo} alt="" />
       </figure>
     </div>
     <div class="Card-icons">
       <div class="Card-icons-firts">
-        <i class="fas fa-heart active-like" />
+        <i
+          class="fas fa-heart"
+          on:click={handleLike}
+          class:active-like={like} />
         <i class="fas fa-paper-plane" on:click={handleClick} />
       </div>
       <div class="Card-icons-second">
-        <i class="fas fa-bookmark active-bookmark" />
+        <i
+          class="fas fa-bookmark"
+          on:click={() => (bookmark = !bookmark)}
+          class:active-bookmark={bookmark} />
       </div>
     </div>
     <div class="Card-description">
