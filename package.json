@@ -14,6 +14,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@modyo/cli": "^3.0.8",
         "svelte": "^3.20.1"
     },
     "devDependencies": {
@@ -24,6 +25,7 @@
         "html-webpack-plugin": "^4.2.0",
         "svelte-loader": "^2.13.6",
         "webpack": "^4.42.1",
-        "webpack-cli": "^3.3.11"
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.10.3"
     }
 }

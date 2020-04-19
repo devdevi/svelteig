@@ -8,7 +8,11 @@ module.exports = {
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: ['*', '.mjs', '.js', '.svelte']
+        extensions: ['*', '.mjs', '.js', '.svelte'],
+        alias: {
+            "@": path.resolve(__dirname, "./src"),
+            "@components": path.resolve(__dirname, "./src/components")
+        }
     },
     module: {
         rules: [{
