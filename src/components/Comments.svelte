@@ -3,7 +3,6 @@
   export let comments = [];
   function addComment(event) {
     const msg = event.target.text.value;
-    console.log(msg.length)
     if (msg.length > 3) {
       const message={
         id: Date.now(),
@@ -12,7 +11,6 @@
       }
       /* Asigna y agrega nuevos comentarios */
       comments = [...comments, message]
-      console.log(comments)
       event.target.text.value = ''
     } 
 
