@@ -67,13 +67,12 @@
       <div class="Stories-item">
         <div class="Stories-item-box">
           <img src="https://arepa.s3.amazonaws.com/oscar.png" alt="" />
-          <h2>
-            Visidvi
-            <span>10 horas antes</span>
-          </h2>
         </div>
+        <h2>
+          gndx
+          <span>10 horas antes</span>
+        </h2>
       </div>
     </div>
-
   </div>
 </div>

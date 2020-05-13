@@ -1,10 +1,10 @@
 <script>
-  import Footer from "./Footer.svelte";
-  import Stories from "./Stories.svelte";
   import Profile from "./Profile.svelte";
+  import Stories from "./Stories.svelte";
+  import Footer from "./Footer.svelte";
 
-  export let name;
   export let nickname;
+  export let name;
 </script>
 
 <style>

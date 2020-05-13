@@ -1,31 +1,33 @@
 <script>
-
-  import { blur } from "svelte/transition";
   import Comments from "./Comments.svelte";
   import Modal from "./Modal.svelte";
   import Share from "./Share.svelte";
 
-  /* Store */
-  import { likeCount } from "./../store/store.js";
+  import { blur } from "svelte/transition";
+
+  import { likeCount } from "../store/store.js";
 
   export let username;
-  /*  export let location; */
-  export let avatar;
+  export let location;
   export let photo;
-
-  export let like = false;
-  export let bookmark = false;
   export let postComment;
   export let comments;
+  export let avatar;
 
   let isModal = false;
+  let like = false;
+  let bookmark = false;
 
   function handleClick() {
     isModal = !isModal;
   }
-  function handleLike() {
+  function handlelike() {
     like = !like;
-    like ? likeCount.update(n => n + 1) : likeCount.update(n => n - 1);
+    if (like) {
+      likeCount.update(n => n + 1);
+    } else {
+      likeCount.update(n => n - 1);
+    }
   }
 </script>
 
@@ -144,7 +146,7 @@
 
 <div class="Card">
   {#if isModal}
-    <div class="" transition:blur>
+    <div transition:blur>
       <Modal>
         <Share on:click={handleClick} />
       </Modal>
@@ -153,41 +155,40 @@
   <div class="Card-container">
     <div class="Card-Header">
       <div class="Card-user">
-        <img src={avatar} alt="" />
-        <h2>{username}</h2>
-        <span>Santiago, Chile</span>
+        <img src={avatar} alt={username} />
+        <h2>
+          {username}
+          <span>{location}</span>
+        </h2>
       </div>
       <div class="Card-settings">
         <i class="fas fa-ellipsis-h" />
       </div>
     </div>
     <div class="Card-photo">
-      <figure on:dblclick={handleLike}>
-        <img src={photo} alt="" />
+      <figure on:dblclick={handlelike}>
+        <img src={photo} alt={username} />
       </figure>
     </div>
     <div class="Card-icons">
       <div class="Card-icons-firts">
         <i
           class="fas fa-heart"
-          on:click={handleLike}
-          class:active-like={like} />
+          class:active-like={like}
+          on:click={handlelike} />
         <i class="fas fa-paper-plane" on:click={handleClick} />
       </div>
       <div class="Card-icons-second">
         <i
           class="fas fa-bookmark"
-          on:click={() => (bookmark = !bookmark)}
-          class:active-bookmark={bookmark} />
+          class:active-bookmark={bookmark}
+          on:click={() => (bookmark = !bookmark)} />
       </div>
     </div>
     <div class="Card-description">
       <h3>{username}</h3>
       <span>{postComment}</span>
-
     </div>
     <Comments {comments} />
-
   </div>
-
 </div>

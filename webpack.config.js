@@ -4,7 +4,7 @@ const config = require('sapper/config/webpack.js');
 const pkg = require('./package.json');
 
 const mode = process.env.NODE_ENV;
-const dev = node === 'development';
+const dev = mode === 'development';
 
 const alias = { svelte: path.resolve('node_modules', 'svelte') }
 const extensions = ['.mjs', '.js', '.json', '.svelte', '.html']
@@ -23,7 +23,7 @@ module.exports = {
                         loader: 'svelte-loader',
                         options: {
                             dev,
-                            hydrateble: true,
+                            hydratable: true,
                             hotReload: false,
                         }
                     }
@@ -34,7 +34,7 @@ module.exports = {
         plugins: [
             new webpack.DefinePlugin({
                 'process.browser': true,
-                'procces.env.NODE_EN': JSON.stringify(mode)
+                'process.env.NODE_ENV': JSON.stringify(mode)
             }),
         ].filter(Boolean),
         devtool: dev && 'inline-source-map'
@@ -70,44 +70,4 @@ module.exports = {
             hints: false
         }
     }
-}/*
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
-    },
-    resolve: {
-        extensions: ['*', '.mjs', '.js', '.svelte'],
-        alias: {
-            "@": path.resolve(__dirname, "./src"),
-            "@components": path.resolve(__dirname, "./src/components")
-        }
-    },
-    module: {
-        rules: [{
-                test: /\.js?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader'
-                }
-            },
-            {
-                test: /\.svelte$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'svelte-loader'
-                }
-            }
-        ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            inject: true,
-            template: './public/index.html',
-            filename: './index.html'
-        })
-    ]
-} */
+}
