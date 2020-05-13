@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   // Components
   import Main from "../components/Main.svelte";
-  import Header from "../components/Header.svelte";
+
   import Sidebar from "../components/Sidebar.svelte";
   import TimeLine from "./../components/TimeLine.svelte";
 
@@ -21,7 +21,7 @@
   });
 </script>
 
-<Header />
+
 <Main>
   <TimeLine posts={data.posts} />
   <Sidebar {...localUser.user} />
