@@ -27,3 +27,27 @@ git branch -u
 ![svelte](https://static.platzi.com/media/user_upload/0016-730e182a-741e-4687-a277-fc818f22ea06.jpg)
 ![svelte](https://static.platzi.com/media/user_upload/0017-9cc15654-d531-4123-bd0e-be54af6e8f65.jpg)
 ![svelte](https://static.platzi.com/media/user_upload/0018-ecbe3106-2060-4fda-bc12-11b0393a0c59.jpg)
+
+
+### Respuesta a:
+¿Qué es Sapper?
+Potencia a svelte:
+
+Añade manejo de rutas
+SSR / SEO
+PWA: service worker
+Compilar y alistar el sitio para enviarlo a un servidor: express
+
+```
+npm install sapper --save-dev
+npm install polka compression sirv
+```
+
+### Polka:
+Version minima de express,
+ Compression :
+comprimir archivos, Sriv_:Publicar archivos de la mejor manera
+
+```
+prefetch: precarga la pagina al detectar el puntero del mouse en el elemento disparador.
+```
