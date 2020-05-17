@@ -47,3 +47,7 @@ npm install polka compression sirv
 Version minima de express,
  Compression :
 comprimir archivos, Sriv_:Publicar archivos de la mejor manera
+
+```
+prefetch: precarga la pagina al detectar el puntero del mouse en el elemento disparador.
+```

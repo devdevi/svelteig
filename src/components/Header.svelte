@@ -1,7 +1,13 @@
 <script>
+  import { goto } from '@sapper/app';
   import { likeCount } from "./../store/store.js";
 
   export let segment;
+
+  const navigateHome = async () => {
+      console.log('navigate');
+     await goto('/')
+  }
 </script>
 
 <style>
@@ -70,7 +76,7 @@
   <div class="Header-container">
     <div class="Header-content">
       <div class="Header-logo">
-        <h1>Instagram</h1>
+        <h1 on:click={navigateHome}>Instagram</h1>
       </div>
       <div class="Header-nav">
         <ul>
@@ -82,6 +88,7 @@
           <li>
             <a
             aria-current={segment === 'profile' ? 'page': undefined }
+            rel="prefetch"
             href="profile">
               <i class="fa fa-user-alt" />
             </a>
